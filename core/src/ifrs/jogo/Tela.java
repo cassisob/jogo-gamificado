@@ -23,6 +23,7 @@ public class Tela extends InputAdapter implements Screen {
 
         carregarMapa = new TmxMapLoader();
         mapa = carregarMapa.load("mapa.tmx");
+
     }
 
     @Override

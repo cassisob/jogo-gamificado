@@ -3,26 +3,78 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "",
+    "activeFile": "mapa.tmx",
     "expandedProjectPaths": [
+        "."
     ],
+    "file.lastUsedOpenFilter": "Todos os Arquivos (*)",
     "fileStates": {
-        "sala1.tmx": {
-            "scale": 0.709672619047619,
-            "selectedLayer": 3,
+        "": {
+            "scaleInDock": 1
+        },
+        "C:/Users/barre/OneDrive/Documentos/aula1/assets/mapa.tmx": {
+            "scale": 1,
+            "selectedLayer": 1,
             "viewCenter": {
-                "x": 649.5953029985321,
-                "y": 384.68442021388137
+                "x": 411,
+                "y": 252
+            }
+        },
+        "C:/Users/barre/OneDrive/Documentos/aula1/assets/mapa.tmx#tileset_gutter": {
+            "scaleInDock": 1
+        },
+        "industiatiled.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "industrial.v2.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "industriatiled.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "mapa.tmx": {
+            "scale": 0.03125,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 7680,
+                "y": 2368
+            }
+        },
+        "mapa.tmx#industriatiled": {
+            "scaleInDock": 1
+        },
+        "sala1.tmx": {
+            "scale": 0.75,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 656,
+                "y": 286.6666666666667
             }
         }
     },
-    "map.height": 21,
+    "last.imagePath": "C:/Users/barre/Downloads",
+    "map.height": 287,
     "map.lastUsedFormat": "tmx",
-    "map.width": 39,
+    "map.width": 521,
     "openFiles": [
+        "mapa.tmx"
     ],
     "project": "mapa.tiled-project",
     "recentFiles": [
-        "sala1.tmx"
-    ]
+        "mapa.tmx",
+        "industiatiled.tsx",
+        "industriatiled.tsx",
+        "sala1.tmx",
+        "C:/Users/barre/OneDrive/Documentos/aula1/assets/mapa.tmx",
+        "industrial.v2.tsx"
+    ],
+    "tileset.embedInMap": true,
+    "tileset.lastUsedFormat": "tsx",
+    "tileset.tileSize": {
+        "height": 32,
+        "width": 32
+    }
 }

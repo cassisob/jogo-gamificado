@@ -15,6 +15,7 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
 import java.lang.management.ThreadMXBean;
+import java.util.Random;
 
 
 public class Tela extends InputAdapter implements Screen {
@@ -26,20 +27,28 @@ public class Tela extends InputAdapter implements Screen {
     private OrthographicCamera gamecam;
     private Viewport gamePort;
     private SpriteBatch batch;
+    private Personagem psg;
+    private Random gerador;
 
 
     public Tela(Game game) {
 
         batch = new SpriteBatch();
 
-        mundo = new World(new Vector2(0, -100f), true);
+        mundo = new World(new Vector2(0, 0), true);
+        psg = new Personagem(this);
 
         gamecam = new OrthographicCamera();
         gamePort = new FitViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), gamecam);
 
+        gamecam.position.x = 8336;
+        gamecam.position.y = 4592;
+
         carregarMapa = new TmxMapLoader();
         mapa = carregarMapa.load("mapa.tmx");
         carregador = new OrthogonalTiledMapRenderer(mapa);
+
+        gerador = new Random();
 
     }
 
@@ -56,19 +65,29 @@ public class Tela extends InputAdapter implements Screen {
 
         batch.begin();
 
+
         carregador.render();
+
+        psg.render(batch);
 
         batch.end();
 
     }
 
     public void update(float delta) {
+        psg.update();
+        mapa();
+
         mundo.step(1 / 60f, 6, 2);
 
-        gamecam.position.x = Gdx.input.getX();
 
         gamecam.update();
         carregador.setView(gamecam);
+    }
+
+    public void mapa() {
+
+        gerador.nextInt(6);
     }
 
     @Override

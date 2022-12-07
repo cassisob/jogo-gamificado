@@ -15,6 +15,8 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
 import java.lang.management.ThreadMXBean;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Random;
 
 
@@ -29,6 +31,10 @@ public class Tela extends InputAdapter implements Screen {
     private SpriteBatch batch;
     private Personagem psg;
     private Random gerador;
+    private int[] array;
+    private Colisao colisao;
+    private Portas portas;
+    private int acum;
 
 
     public Tela(Game game) {
@@ -46,10 +52,12 @@ public class Tela extends InputAdapter implements Screen {
 
         carregarMapa = new TmxMapLoader();
         mapa = carregarMapa.load("mapa.tmx");
-        carregador = new OrthogonalTiledMapRenderer(mapa);
+        carregador = new OrthogonalTiledMapRenderer(mapa, Game.PROPORCAO);
+        colisao = new Colisao(this);
 
         gerador = new Random();
-
+        array = new int[2];
+        array[1] = 4;
     }
 
     @Override
@@ -60,13 +68,13 @@ public class Tela extends InputAdapter implements Screen {
     @Override
     public void render(float delta) {
         update(delta);
+        System.out.println(Arrays.toString(array));
 
         batch.setProjectionMatrix(gamecam.combined);
 
         batch.begin();
 
-
-        carregador.render();
+        carregador.render(array);
 
         psg.render(batch);
 
@@ -75,19 +83,24 @@ public class Tela extends InputAdapter implements Screen {
     }
 
     public void update(float delta) {
-        psg.update();
-        mapa();
 
         mundo.step(1 / 60f, 6, 2);
 
+        psg.update();
+        mapa();
+
+        gamecam.position.x = psg.body.getPosition().x;
+        gamecam.position.y = psg.body.getPosition().y;
 
         gamecam.update();
         carregador.setView(gamecam);
     }
 
     public void mapa() {
-
-        gerador.nextInt(6);
+        for (Portas porta : Colisao.portas) {
+            if (psg.retangulo.colidir(porta)) {
+            }
+        }
     }
 
     @Override

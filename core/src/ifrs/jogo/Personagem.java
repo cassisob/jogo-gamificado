@@ -22,7 +22,7 @@ public class Personagem extends ApplicationAdapter {
     Sprite sprite;
     Texture img;
     Body body;
-    Sound som;
+    Portas retangulo;
 
     public Personagem(Tela screen){
         create(screen);
@@ -37,10 +37,10 @@ public class Personagem extends ApplicationAdapter {
         img = new Texture("bola.png");
         sprite = new Sprite(img);
 
-        sprite.setPosition(8336, 4592);
+        sprite.setPosition(624, 336);
 
         BodyDef bodyDef = new BodyDef();
-        bodyDef.position.set(8336, 4592);
+        bodyDef.position.set(624, 336);
         bodyDef.type = BodyDef.BodyType.DynamicBody;
         body = screen.getMundo().createBody(bodyDef);
 
@@ -52,22 +52,26 @@ public class Personagem extends ApplicationAdapter {
 
         body.createFixture(fixtureDef).setUserData(this);
 
+
+        retangulo = new Portas(body.getPosition().x - (sprite.getWidth() / 2), body.getPosition().y - (sprite.getHeight() / 2), sprite.getWidth(), sprite.getHeight());
     }
 
     public void update() {
 
-        sprite.setPosition(body.getPosition().x, body.getPosition().y);
+        sprite.setPosition(body.getPosition().x - (sprite.getWidth() / 2), body.getPosition().y - (sprite.getHeight() / 2));
+        retangulo.mover(body.getPosition().x - (sprite.getWidth() / 2), body.getPosition().y - (sprite.getHeight() / 2));
+
         if (Gdx.input.isKeyPressed(Input.Keys.D)) {
-            body.applyLinearImpulse(new Vector2(200f, body.getLinearVelocity().y), body.getWorldCenter(), true);
+            body.applyLinearImpulse(new Vector2(500f, body.getLinearVelocity().y), body.getWorldCenter(), true);
         }
         if (Gdx.input.isKeyPressed(Input.Keys.A)) {
-            body.applyLinearImpulse(new Vector2(-200f, 0), body.getWorldCenter(), true);
+            body.applyLinearImpulse(new Vector2(-500f, 0), body.getWorldCenter(), true);
         }
         if (Gdx.input.isKeyPressed(Input.Keys.W)) {
-            body.applyLinearImpulse(new Vector2(body.getLinearVelocity().x, 200f), body.getWorldCenter(), true);
+            body.applyLinearImpulse(new Vector2(body.getLinearVelocity().x, 500f), body.getWorldCenter(), true);
         }
         if (Gdx.input.isKeyPressed(Input.Keys.S)) {
-            body.applyLinearImpulse(new Vector2(body.getLinearVelocity().x, -200f), body.getWorldCenter(), true);
+            body.applyLinearImpulse(new Vector2(body.getLinearVelocity().x, -500f), body.getWorldCenter(), true);
         }
         if (!Gdx.input.isKeyPressed(Input.Keys.D) && !Gdx.input.isKeyPressed(Input.Keys.A) && !Gdx.input.isKeyPressed(Input.Keys.W) && !Gdx.input.isKeyPressed(Input.Keys.S)) {
             body.setLinearVelocity(new Vector2(0, 0));

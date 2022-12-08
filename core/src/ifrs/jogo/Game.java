@@ -2,7 +2,7 @@ package ifrs.jogo;
 
 public class Game extends com.badlogic.gdx.Game {
 
-	public static final int PROPORCAO = 3;
+	public static final int PROPORCAO = 1;
 
 	
 	@Override

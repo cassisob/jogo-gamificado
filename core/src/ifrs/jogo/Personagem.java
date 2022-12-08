@@ -17,14 +17,15 @@ import java.util.ArrayList;
 
 
 public class Personagem extends ApplicationAdapter {
-
-    SpriteBatch batch;
     Sprite sprite;
     Texture img;
     Body body;
     Portas retangulo;
+    float posicaoX, posicaoY;
 
-    public Personagem(Tela screen){
+    public Personagem(Tela screen, float x, float y){
+        posicaoX = x;
+        posicaoY = y;
         create(screen);
     }
 
@@ -32,15 +33,13 @@ public class Personagem extends ApplicationAdapter {
 
     public void create(Tela screen) {
 
-        batch = new SpriteBatch();
-
         img = new Texture("bola.png");
         sprite = new Sprite(img);
 
-        sprite.setPosition(624, 336);
+        sprite.setPosition(posicaoX, posicaoY);
 
         BodyDef bodyDef = new BodyDef();
-        bodyDef.position.set(624, 336);
+        bodyDef.position.set(posicaoX, posicaoY);
         bodyDef.type = BodyDef.BodyType.DynamicBody;
         body = screen.getMundo().createBody(bodyDef);
 
@@ -49,6 +48,8 @@ public class Personagem extends ApplicationAdapter {
 
         FixtureDef fixtureDef = new FixtureDef();
         fixtureDef.shape = shape;
+
+        body.setGravityScale(0);
 
         body.createFixture(fixtureDef).setUserData(this);
 

@@ -30,8 +30,6 @@ public class Tela extends InputAdapter implements Screen {
     private Personagem psg;
     private Random gerador;
     private int[][] matrizMapa;
-    private int[][] matrizJogador;
-
     private int jogadorX, jogadorY;
     private Colisao colisao;
     private Portas portas;
@@ -56,8 +54,7 @@ public class Tela extends InputAdapter implements Screen {
         colisao = new Colisao(this);
 
         gerador = new Random();
-        matrizMapa = new int[12][12];
-        matrizJogador = new int[12][12];
+        matrizMapa = new int[13][13];
 
         matrizMapa[6][6] = 7; // sala principal
         matrizMapa[6][5] = gerador.nextInt(5) + 1;
@@ -68,7 +65,6 @@ public class Tela extends InputAdapter implements Screen {
         jogadorX = 6;
         jogadorY = 6;
 
-        matrizJogador[jogadorX][jogadorY] = 1;
         System.out.println(Arrays.deepToString(matrizMapa));
     }
 
@@ -110,30 +106,52 @@ public class Tela extends InputAdapter implements Screen {
     public void mapa() {
         for (Portas porta : Colisao.portas) {
             if (psg.retangulo.colidir(porta) && psg.retangulo.y >= 600) {
-                matrizJogador[jogadorX][jogadorY] = 0;
 
                 if (jogadorY <= 10) {
                     jogadorY += 1;
                 }
-                matrizJogador[jogadorX][jogadorY] = 1;
 
                 if (matrizMapa[jogadorX][jogadorY] == 0) {
-
+                    matrizMapa[jogadorX][jogadorY] = gerador.nextInt(5) + 1;
                 }
+
+                escolher_mapa();
+
             } else if (psg.retangulo.colidir(porta) && psg.retangulo.y <= 100) {
-                matrizJogador[jogadorX][jogadorY] = 0;
 
                 if (jogadorY >= 1) {
                     jogadorY -= 1;
                 }
-                matrizJogador[jogadorX][jogadorY] = 1;
 
                 if (matrizMapa[jogadorX][jogadorY] == 0) {
-
+                    matrizMapa[jogadorX][jogadorY] = gerador.nextInt(5) + 1;
                 }
 
-                mapa = carregarMapa.load("sala1.tmx");
-                carregador = new OrthogonalTiledMapRenderer(mapa, Game.PROPORCAO);
+                escolher_mapa();
+
+            } else if (psg.retangulo.colidir(porta) && psg.retangulo.x >= 1000) {
+
+                if (jogadorX >= 1) {
+                    jogadorX -= 1;
+                }
+
+                if (matrizMapa[jogadorX][jogadorY] == 0) {
+                    matrizMapa[jogadorX][jogadorY] = gerador.nextInt(5) + 1;
+                }
+
+                escolher_mapa();
+
+            } else if (psg.retangulo.colidir(porta) && psg.retangulo.x <= 100) {
+
+                if (jogadorX <= 11) {
+                    jogadorX += 1;
+                }
+
+                if (matrizMapa[jogadorX][jogadorY] == 0) {
+                    matrizMapa[jogadorX][jogadorY] = gerador.nextInt(5) + 1;
+                }
+
+                escolher_mapa();
             }
         }
     }

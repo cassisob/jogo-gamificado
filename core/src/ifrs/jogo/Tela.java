@@ -44,14 +44,14 @@ public class Tela extends InputAdapter implements Screen {
         batch = new SpriteBatch();
 
         mundo = new World(new Vector2(0, 0), true);
-        psg = new Personagem(this, 624,336);
+        psg = new Personagem(this, 312,168);
         inter = new Interface(this);
 
         gamecam = new OrthographicCamera();
-        gamePort = new FitViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), gamecam);
+        gamePort = new FitViewport(Gdx.graphics.getWidth() / 2f, Gdx.graphics.getHeight() / 2f, gamecam);
 
-        gamecam.position.x = 624;
-        gamecam.position.y = 336;
+        gamecam.position.x = 312;
+        gamecam.position.y = 168;
 
         carregarMapa = new TmxMapLoader();
         mapa = carregarMapa.load("salaprincipal.tmx");
@@ -72,7 +72,8 @@ public class Tela extends InputAdapter implements Screen {
         jogadorX = 6;
         jogadorY = 6;
 
-        System.out.println(Arrays.deepToString(matrizMapa));
+        inter.criandoMiniMapa(matrizMapa, matrizJogador);
+
     }
 
     @Override
@@ -113,62 +114,78 @@ public class Tela extends InputAdapter implements Screen {
 
     public void mapa() {
         for (Portas porta : Colisao.portas) {
-            if (psg.retangulo.colidir(porta) && psg.retangulo.y >= 600) {
+            if (psg.retangulo.colidir(porta) && psg.retangulo.y >= 300) {
 
-                if (jogadorY <= 10) {
+                if (jogadorY <= 11) {
                     jogadorY += 1;
+                    matrizJogador[jogadorX][jogadorY] = 1;
                 }
 
                 if (matrizMapa[jogadorX][jogadorY + 1] == 0) {
-                    matrizJogador[jogadorX][jogadorY + 1] = 1;
                     matrizMapa[jogadorX][jogadorY + 1] = gerador.nextInt(5) + 1;
-                    matrizMapa[jogadorX - 1][jogadorY + 1] = gerador.nextInt(5) + 1;
-                    matrizMapa[jogadorX + 1][jogadorY + 1] = gerador.nextInt(5) + 1;
+                }
+                if (matrizMapa[jogadorX - 1][jogadorY] == 0) {
+                    matrizMapa[jogadorX - 1][jogadorY] = gerador.nextInt(5) + 1;
+                }
+                if (matrizMapa[jogadorX + 1][jogadorY] == 0) {
+                    matrizMapa[jogadorX + 1][jogadorY] = gerador.nextInt(5) + 1;
                 }
 
                 animacao = true;
 
-            } else if (psg.retangulo.colidir(porta) && psg.retangulo.y <= 100) {
+            } else if (psg.retangulo.colidir(porta) && psg.retangulo.y <= 50) {
 
                 if (jogadorY >= 1) {
                     jogadorY -= 1;
+                    matrizJogador[jogadorX][jogadorY] = 1;
                 }
 
                 if (matrizMapa[jogadorX][jogadorY - 1] == 0) {
-                    matrizJogador[jogadorX][jogadorY] = 1;
                     matrizMapa[jogadorX][jogadorY - 1] = gerador.nextInt(5) + 1;
-                    matrizMapa[jogadorX - 1][jogadorY - 1] = gerador.nextInt(5) + 1;
-                    matrizMapa[jogadorX + 1][jogadorY - 1] = gerador.nextInt(5) + 1;
                 }
-
-                animacao = true;
-
-            } else if (psg.retangulo.colidir(porta) && psg.retangulo.x >= 1000) {
-
-                if (jogadorX >= 1) {
-                    jogadorX -= 1;
+                if (matrizMapa[jogadorX - 1][jogadorY] == 0) {
+                    matrizMapa[jogadorX - 1][jogadorY] = gerador.nextInt(5) + 1;
                 }
-
                 if (matrizMapa[jogadorX + 1][jogadorY] == 0) {
-                    matrizJogador[jogadorX][jogadorY] = 1;
                     matrizMapa[jogadorX + 1][jogadorY] = gerador.nextInt(5) + 1;
-                    matrizMapa[jogadorX + 1][jogadorY + 1] = gerador.nextInt(5) + 1;
-                    matrizMapa[jogadorX + 1][jogadorY - 1] = gerador.nextInt(5) + 1;
                 }
 
                 animacao = true;
 
-            } else if (psg.retangulo.colidir(porta) && psg.retangulo.x <= 100) {
+            } else if (psg.retangulo.colidir(porta) && psg.retangulo.x >= 500) {
 
                 if (jogadorX <= 11) {
                     jogadorX += 1;
+                    matrizJogador[jogadorX][jogadorY] = 1;
+                }
+
+                if (matrizMapa[jogadorX + 1][jogadorY] == 0) {
+                    matrizMapa[jogadorX + 1][jogadorY] = gerador.nextInt(5) + 1;
+                }
+                if (matrizMapa[jogadorX][jogadorY + 1] == 0) {
+                    matrizMapa[jogadorX][jogadorY + 1] = gerador.nextInt(5) + 1;
+                }
+                if (matrizMapa[jogadorX][jogadorY - 1] == 0) {
+                    matrizMapa[jogadorX][jogadorY - 1] = gerador.nextInt(5) + 1;
+                }
+
+                animacao = true;
+
+            } else if (psg.retangulo.colidir(porta) && psg.retangulo.x <= 50) {
+
+                if (jogadorX >= 1) {
+                    jogadorX -= 1;
+                    matrizJogador[jogadorX][jogadorY] = 1;
                 }
 
                 if (matrizMapa[jogadorX - 1][jogadorY] == 0) {
-                    matrizJogador[jogadorX][jogadorY] = 1;
                     matrizMapa[jogadorX - 1][jogadorY] = gerador.nextInt(5) + 1;
-                    matrizMapa[jogadorX - 1][jogadorY + 1] = gerador.nextInt(5) + 1;
-                    matrizMapa[jogadorX - 1][jogadorY - 1] = gerador.nextInt(5) + 1;
+                }
+                if (matrizMapa[jogadorX + 1][jogadorY] == 0) {
+                    matrizMapa[jogadorX][jogadorY + 1] = gerador.nextInt(5) + 1;
+                }
+                if (matrizMapa[jogadorX][jogadorY - 1] == 0) {
+                    matrizMapa[jogadorX][jogadorY - 1] = gerador.nextInt(5) + 1;
                 }
 
                 animacao = true;
@@ -179,17 +196,21 @@ public class Tela extends InputAdapter implements Screen {
         if (animacao) {
             psg.dispose();
 
-            if (psg.body.getPosition().y >= 600) {
-                psg = new Personagem(this, 624, 50);
-            } else if (psg.body.getPosition().y <= 100) {
-                psg = new Personagem(this, 624, 600);
-            } else if (psg.body.getPosition().x >= 1000) {
-                psg = new Personagem(this, 100, 336);
-            } else if (psg.body.getPosition().x <= 100) {
-                psg = new Personagem(this, 1100, 336);
+            if (psg.body.getPosition().y >= 300) {
+                psg = new Personagem(this, 312, 25);
+            } else if (psg.body.getPosition().y <= 50) {
+                psg = new Personagem(this, 312, 300);
+            } else if (psg.body.getPosition().x >= 500) {
+                psg = new Personagem(this, 50, 168);
+            } else if (psg.body.getPosition().x <= 50) {
+                psg = new Personagem(this, 550, 168);
             }
 
             escolher_mapa();
+
+            inter.criandoMiniMapa(matrizMapa, matrizJogador);
+
+            System.out.println(Arrays.deepToString(matrizMapa));
 
             animacao = false;
         }

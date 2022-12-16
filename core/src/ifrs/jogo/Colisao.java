@@ -26,7 +26,7 @@ public class Colisao {
 
         for (MapObject object : map.getLayers().get(4).getObjects().getByType(RectangleMapObject.class)) {
             Rectangle rect = ((RectangleMapObject) object).getRectangle();
-            portas.add(new Portas(rect.getX(), rect.getY(), rect.getWidth(), rect.getHeight()));
+            portas.add(new Portas(rect.getX() * Game.PROPORCAO, rect.getY() * Game.PROPORCAO, rect.getWidth() * Game.PROPORCAO, rect.getHeight() * Game.PROPORCAO));
         }
 
         for(MapObject object : map.getLayers().get(3).getObjects().getByType(RectangleMapObject.class)){

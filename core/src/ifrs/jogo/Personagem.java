@@ -44,7 +44,7 @@ public class Personagem extends ApplicationAdapter {
         body = screen.getMundo().createBody(bodyDef);
 
         CircleShape shape = new CircleShape();
-        shape.setRadius(sprite.getHeight() / 2);
+        shape.setRadius(sprite.getHeight() / 4);
 
         FixtureDef fixtureDef = new FixtureDef();
         fixtureDef.shape = shape;
@@ -59,8 +59,8 @@ public class Personagem extends ApplicationAdapter {
 
     public void update() {
 
-        sprite.setPosition(body.getPosition().x - (sprite.getWidth() / 2), body.getPosition().y - (sprite.getHeight() / 2));
-        retangulo.mover(body.getPosition().x - (sprite.getWidth() / 2), body.getPosition().y - (sprite.getHeight() / 2));
+        sprite.setPosition(body.getPosition().x - (sprite.getWidth() / 4), body.getPosition().y - (sprite.getHeight() / 4));
+        retangulo.mover(body.getPosition().x - (sprite.getWidth() / 4), body.getPosition().y - (sprite.getHeight() / 4));
 
         if (Gdx.input.isKeyPressed(Input.Keys.D)) {
             body.applyLinearImpulse(new Vector2(500f, body.getLinearVelocity().y), body.getWorldCenter(), true);
@@ -81,7 +81,7 @@ public class Personagem extends ApplicationAdapter {
 
     public void render(SpriteBatch batch) {
 
-        batch.draw(sprite, sprite.getX(), sprite.getY(), sprite.getWidth(), sprite.getHeight());
+        batch.draw(sprite, sprite.getX(), sprite.getY(), sprite.getWidth() / 2, sprite.getHeight() /2);
 
     }
 

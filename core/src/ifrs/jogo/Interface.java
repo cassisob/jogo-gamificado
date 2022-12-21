@@ -21,23 +21,23 @@ public class Interface {
         matrizDesenho = new int[3][3];
         matrizMiniMapa = new int[13][13];
 
-        img = new Texture("mapa0.png");
+        img = new Texture("minimapa/mapa0.png");
         sprite0 = new Sprite(img);
-        img = new Texture("mapa1.png");
+        img = new Texture("minimapa/mapa1.png");
         sprite1 = new Sprite(img);
-        img = new Texture("mapa2.png");
+        img = new Texture("minimapa/mapa2.png");
         sprite2 = new Sprite(img);
-        img = new Texture("mapa3.png");
+        img = new Texture("minimapa/mapa3.png");
         sprite3 = new Sprite(img);
-        img = new Texture("mapa4.png");
+        img = new Texture("minimapa/mapa4.png");
         sprite4 = new Sprite(img);
-        img = new Texture("mapa5.png");
+        img = new Texture("minimapa/mapa5.png");
         sprite5 = new Sprite(img);
-        img = new Texture("mapa6.png");
+        img = new Texture("minimapa/mapa6.png");
         sprite6 = new Sprite(img);
-        img = new Texture("mapaprincipal.png");
+        img = new Texture("minimapa/mapaprincipal.png");
         spriteprincipal = new Sprite(img);
-        img = new Texture("mapafinal.png");
+        img = new Texture("minimapa/mapafinal.png");
         spritefinal = new Sprite(img);
 
     }

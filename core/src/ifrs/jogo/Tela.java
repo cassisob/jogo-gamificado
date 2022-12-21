@@ -54,7 +54,7 @@ public class Tela extends InputAdapter implements Screen {
         gamecam.position.y = 168;
 
         carregarMapa = new TmxMapLoader();
-        mapa = carregarMapa.load("salaprincipal.tmx");
+        mapa = carregarMapa.load("mapas/salaprincipal.tmx");
         carregador = new OrthogonalTiledMapRenderer(mapa, Game.PROPORCAO);
         colisao = new Colisao(this);
 
@@ -198,12 +198,16 @@ public class Tela extends InputAdapter implements Screen {
 
             if (psg.body.getPosition().y >= 300) {
                 psg = new Personagem(this, 312, 25);
+                colisao = new Colisao(this);
             } else if (psg.body.getPosition().y <= 50) {
                 psg = new Personagem(this, 312, 300);
+                colisao = new Colisao(this);
             } else if (psg.body.getPosition().x >= 500) {
                 psg = new Personagem(this, 50, 168);
+                colisao = new Colisao(this);
             } else if (psg.body.getPosition().x <= 50) {
                 psg = new Personagem(this, 550, 168);
+                colisao = new Colisao(this);
             }
 
             escolher_mapa();
@@ -219,42 +223,42 @@ public class Tela extends InputAdapter implements Screen {
     public void escolher_mapa() {
         switch (matrizMapa[jogadorX][jogadorY]) {
             case 1:
-                mapa = carregarMapa.load("sala1.tmx");
+                mapa = carregarMapa.load("mapas/sala1.tmx");
                 carregador = new OrthogonalTiledMapRenderer(mapa, Game.PROPORCAO);
                 break;
 
             case 2:
-                mapa = carregarMapa.load("sala2.tmx");
+                mapa = carregarMapa.load("mapas/sala2.tmx");
                 carregador = new OrthogonalTiledMapRenderer(mapa, Game.PROPORCAO);
                 break;
 
             case 3:
-                mapa = carregarMapa.load("sala3.tmx");
+                mapa = carregarMapa.load("mapas/sala3.tmx");
                 carregador = new OrthogonalTiledMapRenderer(mapa, Game.PROPORCAO);
                 break;
 
             case 4:
-                mapa = carregarMapa.load("sala4.tmx");
+                mapa = carregarMapa.load("mapas/sala4.tmx");
                 carregador = new OrthogonalTiledMapRenderer(mapa, Game.PROPORCAO);
                 break;
 
             case 5:
-                mapa = carregarMapa.load("sala5.tmx");
+                mapa = carregarMapa.load("mapas/sala5.tmx");
                 carregador = new OrthogonalTiledMapRenderer(mapa, Game.PROPORCAO);
                 break;
 
             case 6:
-                mapa = carregarMapa.load("sala6.tmx");
+                mapa = carregarMapa.load("mapas/sala6.tmx");
                 carregador = new OrthogonalTiledMapRenderer(mapa, Game.PROPORCAO);
                 break;
 
             case 7:
-                mapa = carregarMapa.load("salaprincipal.tmx");
+                mapa = carregarMapa.load("mapas/salaprincipal.tmx");
                 carregador = new OrthogonalTiledMapRenderer(mapa, Game.PROPORCAO);
                 break;
 
             case 8:
-                mapa = carregarMapa.load("salafinal.tmx");
+                mapa = carregarMapa.load("mapas/salafinal.tmx");
                 carregador = new OrthogonalTiledMapRenderer(mapa, Game.PROPORCAO);
                 break;
         }

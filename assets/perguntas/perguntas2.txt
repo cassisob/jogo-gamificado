@@ -39,17 +39,17 @@ Resp: a variável a tem o valor 3 e é menor que a variável b que tem o valor
 
 
 *) Qual a saída do código Python abaixo?
-1 def say(message, times = 1):
-2 	print(message * times)
-3 say('Hello')
-4 say('World', 5)
+1   def say(message, times = 1):
+2 	    print(message * times)
+3   say('Hello')
+4       say('World', 5)
+
 a)
 Hello
 WorldWorldWorldWorldWorld ***
 b)
 Hello
 World 5
-
 c)
 Hello
 World,World,World,World,World

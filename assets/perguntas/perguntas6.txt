@@ -1,0 +1,81 @@
+///Tuplas e Dicionários
+
+*) Qual a saída do código Python abaixo?
+1. d = {"john":40, "peter":45}
+2. d["john"]
+
+a) 40 ***
+b) 45
+c) “john”
+d) “peter”
+Resp: o dicionário d tem como valor 40 para a chave “john"
+
+
+*) Qual a saída do código Python abaixo?
+1.  numberGames = {}
+2.  numberGames[(1,2,4)] = 8
+3.  numberGames[(4,2,1)] = 10
+4.  numberGames[(1,2)] = 12
+5.  sum = 0
+6.  for k in numberGames:
+7.      sum += numberGames[k]
+8.  print len(numberGames) + sum
+a) 30
+b) 24
+c) 33 ***
+d) 12
+Resp: Tuplas podem ser utilizadas como chave de um dicionário. O
+tamanho e a ordem dos elementos da tupla são usados para diferenciálas.
+
+
+*) Qual a saída do código Python abaixo?
+>>> a=(1,2,3,4)
+>>> del(a[2])
+
+a) a=(1,2,4)
+b) a=(1,3,4)
+c) a=(3,4)
+d) Erro pois tuplas são imutáveis ***
+Resp: Tuplas não permitem remoções
+
+
+*) O código abaixo é válido?
+>>> a,b,c=1,2,3
+>>> a,b,c
+
+a) Yes, [1,2,3] is printed
+b) No, invalid syntax
+c) Yes, (1,2,3) is printed ***
+d) 1 is printed
+Resp: Tuplas não necessitam de parênteses
+
+*) Qual o resultado do teste condicional abaixo?
+1. d = {"john":40, "peter":45}
+2. "john" in d
+
+a) True ***
+b) False
+c) None
+d) Erro
+Resp: a chave “john” faz parte do dicionário d.
+
+
+*) Duponha que d = {“john”:40, “peter”:45}. Para remover o valor
+associado à chave “john”, qual comando abaixo deveria ser usado?
+
+a) d.delete(“john”:40)
+b) d.delete(“john”)
+c) del d[“john”] ***
+d) del d(“john”:40)
+Resp: o comando da letra c remove o par de chave e valor
+
+
+*) Qual a saída do código Python abaixo?
+1. d = {"john":40, "peter":45}
+2. print(list(d.keys()))
+
+a) [“john”, “peter”] ***
+b) [“john”:40, “peter”:45]
+c) (“john”, “peter”)
+d) (“john”:40, “peter”:45)
+Resp: o código gera uma lista com as chaves do dicionário d.

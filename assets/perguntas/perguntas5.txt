@@ -1,0 +1,61 @@
+///String
+
+*) Qual é a saída do código Python a seguir?
+x = 'abcd'
+for i in range(len(x)):
+    print(i)
+
+a) error
+b) 1 2 3 4
+c) a b c d
+d) 0 1 2 3 ***
+Resp: A variável i assume os valores 0, 1, 2 e 3 pois a função len indica
+o número de elementos da string x (3) e a função range gera uma série
+de valores de 0 a 3.
+
+
+*) Qual o resultado da expressão abaixo?
+1. >>>str="hello"
+2. >>>str[:2]
+3. >>>
+
+a) he ***
+b) lo
+c) olleh
+d) hello
+Resp: Fatia-se a string da posição zero até a posição 1.
+
+
+*) Qual é a saída do código Python abaixo?
+string = "my name is x"
+for i in string.split():
+    print (i, end=", ")
+
+a) m, y, , n, a, m, e, , i, s, , x,
+b) m, y, , n, a, m, e, , i, s, , x
+c) my, name, is, x, ***
+d) erro
+Resp: Uma palavra por vez é mostrada devido ao comando Split
+separar a string em partes a partir dos espaços.
+
+
+*) Qual é a saída do código Python abaixo?
+string = "my name is x"
+for i in ' '.join(string.split()):
+    print (i, end=", ")
+
+a) m, y, , n, a, m, e, , i, s, , x, ***
+b) m, y, , n, a, m, e, , i, s, , x
+c) my, name, is, x,
+d) erro
+Resp: a variável i assume cada um dos caracteres da string.
+
+
+*) Qual é a saída do código Python a seguir?
+print('a@ 1,'.islower())
+
+a) True ***
+b) False
+c) None
+d) Erro
+Resp: não existe nenhuma letra maiúscula na string.
